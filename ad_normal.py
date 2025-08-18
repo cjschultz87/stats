@@ -100,4 +100,7 @@ while i <= N:
     
     i += 1
     
-print(f"A^2 = {-N - S}")
+
+A_sqr = float(-N - S)/float(N)
+
+print(f"A^2 = {A_sqr}")
