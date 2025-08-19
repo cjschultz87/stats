@@ -6,29 +6,43 @@ from sys import argv
 
 ########################################
 
-def f_alpha(A,y):
+def f_mean(A):
     
     rVal = 0
     
     N = len(alpha)
-    
-    N_1 = 0
     
     count = 0
     
     for a in A:
         count += a
         
-    mean = float(count)/float(N)
+    rVal = float(count)/float(N)
+    
+    return rVal
+    
+########################################
+
+def f_sd(A,m):
+    
+    rVal = 0
     
     for a in A:
-        difference = pow(a - mean,2)
+        difference = pow(a - m,2)
         
         rVal += difference
-    
+        
     rVal = (float(1)/float(N - 1)) * rVal
     
-    rVal = float(y - mean)/sqrt(rVal)
+    return rVal
+    
+########################################
+
+def f_alpha(A,y,m,sd):
+    
+    rVal = 0
+    
+    rVal = float(y - m)/sqrt(sd)
     
     return rVal
     
@@ -54,6 +68,9 @@ def f_p(A,y):
 
 alpha = eval(argv[1])
 
+mean = f_mean(alpha)
+sd = f_sd(alpha)
+
 N = len(alpha)    
 S = 0
 
@@ -63,7 +80,7 @@ i = 0
 
 while i < len(alpha):
     
-    alpha_prime.append(f_alpha(alpha,alpha[i]))
+    alpha_prime.append(f_alpha(alpha,alpha[i],mean,sd))
     
     alpha_prime[i] = sqrt(pow(alpha_prime[i],2))
     
@@ -100,7 +117,7 @@ while i <= N:
     
     i += 1
     
-
 A_sqr = float(-N - S)/float(N)
 
 print(f"A^2 = {A_sqr}")
+
