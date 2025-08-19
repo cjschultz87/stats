@@ -23,12 +23,14 @@ def f_mean(A):
     
 ########################################
 
-def f_sd(A,m):
+def f_sd(A,mean):
     
     rVal = 0
     
+    N = len(A)
+    
     for a in A:
-        difference = pow(a - m,2)
+        difference = pow(a - mean,2)
         
         rVal += difference
         
@@ -38,11 +40,11 @@ def f_sd(A,m):
     
 ########################################
 
-def f_alpha(A,y,m,sd):
+def f_alpha(y,mean,sd):
     
     rVal = 0
     
-    rVal = float(y - m)/sqrt(sd)
+    rVal = float(y - mean)/sqrt(sd)
     
     return rVal
     
@@ -69,7 +71,7 @@ def f_p(A,y):
 alpha = eval(argv[1])
 
 mean = f_mean(alpha)
-sd = f_sd(alpha)
+sd = f_sd(alpha,mean)
 
 N = len(alpha)    
 S = 0
@@ -80,7 +82,7 @@ i = 0
 
 while i < len(alpha):
     
-    alpha_prime.append(f_alpha(alpha,alpha[i],mean,sd))
+    alpha_prime.append(f_alpha(alpha[i],mean,sd))
     
     alpha_prime[i] = sqrt(pow(alpha_prime[i],2))
     
@@ -120,4 +122,3 @@ while i <= N:
 A_sqr = float(-N - S)/float(N)
 
 print(f"A^2 = {A_sqr}")
-
