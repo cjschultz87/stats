@@ -104,6 +104,8 @@ if argv[1] == 'f':
 else:
     alpha = eval(argv[1])
 
+foxtrot.close()
+
 mean = f_mean(alpha)
 sd = f_sd(alpha,mean)
 
@@ -156,4 +158,5 @@ while i <= N:
 A_sqr = float(-N - S)/float(N)
 
 print(f"A^2 = {A_sqr}")
+
 
