@@ -68,7 +68,41 @@ def f_p(A,y):
     
 #######################################
 
-alpha = eval(argv[1])
+alpha = []
+
+if argv[1] == 'f':
+    try:
+        foxtrot = open(argv[2],"r")
+    except:
+        print("invalid file")
+        
+        quit()
+    
+    iota = 0
+    
+    i = 0
+    
+    while True:
+        line = foxtrot.readline()
+        
+        print(line[2:4])
+        
+        if line == '':
+            break
+        
+        try:
+            iota = int(line)
+        except:
+            print(f"invalid data type at line {i}")
+            
+            quit()
+            
+        alpha.append(iota)
+        
+        i += 1
+    
+else:
+    alpha = eval(argv[1])
 
 mean = f_mean(alpha)
 sd = f_sd(alpha,mean)
@@ -122,3 +156,4 @@ while i <= N:
 A_sqr = float(-N - S)/float(N)
 
 print(f"A^2 = {A_sqr}")
+
