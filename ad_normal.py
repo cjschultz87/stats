@@ -85,8 +85,6 @@ if argv[1] == 'f':
     while True:
         line = foxtrot.readline()
         
-        print(line[2:4])
-        
         if line == '':
             break
         
@@ -158,5 +156,6 @@ while i <= N:
 A_sqr = float(-N - S)/float(N)
 
 print(f"A^2 = {A_sqr}")
+
 
 
