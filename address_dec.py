@@ -39,11 +39,13 @@ while True:
     
     delta = 0
     
-    i = 0
+   i = 0
+    accent_count = 0
     
     while True:
         if line[i] == '`':
             i += 1
+            accent_count += 1
         elif not(line[i] in digits):
             break
         
@@ -57,7 +59,7 @@ while True:
             i += 1
             i_0 += 1
         
-        delta += hex * pow(256,7-((i - 2)//2))
+        delta += hex * pow(256,7-((i - (accent_count + 2))//2))
     
     sierra = str(delta)
     
